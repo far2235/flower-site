@@ -1,0 +1,139 @@
+html{
+    background-color: beige;
+}
+
+img{
+    max-width: 100%;
+    max-height: auto;
+}
+
+.mainNav{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: burlywood;
+}
+
+.mainNav a{
+    float: left;
+    text-align: center;
+    padding: 10px 20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-decoration: none;
+}
+
+.catalog-nav table{
+    text-align: center;
+}
+
+.catalog-nav table td{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    min-width:fit-content;
+    min-height:fit-content;
+}
+
+.catalog-items{
+    padding:15px;
+    border-radius: 10%;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+}
+
+.catalog-nav img:hover{
+    box-shadow: 0px 0px 10px 0px blueviolet;
+}
+
+table{
+    border: solid 3pt blueviolet;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+td{
+    padding: 10px;
+    border: solid 1pt blueviolet;
+}
+
+th{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: left;
+    padding: 2px;
+    border: solid 1pt blueviolet;
+}
+
+table caption{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+    background-color: rgb(178, 124, 228);
+    padding:20px;
+    border: solid 3pt blueviolet;
+}
+
+tbody tr{
+    background-color: rgb(230, 213, 247);
+}
+
+.drop-button{
+    background-color: inherit;
+    color: inherit;
+    font-family: inherit;
+    padding: 0;
+    border: none;
+}
+
+.dropdown{
+    position: relative;
+    display: inline-block;
+}
+
+.drop-options{
+    display: none;
+    position: absolute;
+    top:40px;
+    z-index: 1;
+    background-color: burlywood;
+    box-shadow: 0px 8px 16px 0px coral;
+    min-width: 100px;
+}
+
+.drop-options a{
+    float: none;
+    display: block;
+    padding: 10px 10px;
+}
+
+.mainNav a:hover, .drop-options:hover .drop-button{
+    background-color: coral;
+}
+
+.dropdown:hover .drop-options{
+    display: block;
+}
+
+.dropdown:hover .drop-button{
+    background-color: coral;
+}
+
+a{
+    color: rgb(72, 7, 133);
+}
+
+a:hover{
+    color: rgb(146, 14, 129);
+}
+
+h1, .flower-page h2{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.flower-page p{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.flower-page img{
+    float: right;
+    margin: 20px;
+    max-width: 60%;
+    max-height: 400px;
+    object-fit: cover;
+}

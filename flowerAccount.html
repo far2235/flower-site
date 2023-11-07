@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="flowerCSS.css">
+        <h1>Account</h1>
+    </head>
+    <body>
+        <div class="mainNav">
+            <div class="dropdown">
+                <a href="flowerCatalog.html"><button class="drop-button">Catalog</button></a>
+                <div class="drop-options">
+                    <a href="aster.html">Aster</a>
+                    <a href="chrysanthemum.html">Chrysanthemum</a>
+                    <a href="crocus.html">Crocus</a>
+                    <a href="daffodil.html">Daffodil</a>
+                    <a href="fuchsia.html">Fuchsia</a>
+                    <a href="rose.html">Rose</a>
+                    <a href="tulip.html">Tulip</a>
+                </div>
+            </div>
+                <a href="flowerHome.html">Home</a>
+                <a href="flowerSeasonal.html">Seasonal</a>
+                <a href="flowerPurchase.html">Purchase</a>
+                <a href="flowerAccount.html">My Account</a>
+            </div>
+        </div>
+        <div>
+            <p>
+                Log in to make purchases, view transaction history, and more!
+            </p>
+        </div>
+        <div>
+            <form method="post" action="process.php">
+                <fieldset>
+                    <legend>Log in</legend>
+                    <p>
+                        <label>Username</label>
+                        <input type="text" name="username" />
+                    </p>
+                    <p>
+                        <label>Password</label>
+                        <input type="password" name="password" />
+                    </p>
+                    <input type="submit" />
+                </fieldset>
+            </form>
+        </div>
+        <div>
+            <p>
+                New user? Create an account by clicking <a href="accountCreate.html">here</a>.
+            </p>
+        </div>
+    </body>
+</html>
