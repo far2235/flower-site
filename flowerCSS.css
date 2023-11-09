@@ -1,10 +1,184 @@
 html{
     background-color: beige;
+    background-image: url("images/flower_footer.png");
+    background-position: center bottom;
+    background-repeat: repeat-x;
+    background-size: contain;
+    background-size: 30%;
+    min-height: 100vh;
 }
 
 img{
     max-width: 100%;
     max-height: auto;
+}
+
+p{
+    background-color: beige;
+}
+
+.homepage{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 20px;
+}
+
+.homepage header{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 24px;
+    margin-bottom: 30px;
+}
+
+.shop{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 20px;
+}
+
+.shop img{
+    position: absolute;
+    justify-self: center;
+    align-self:baseline;
+    border-radius: 10%;
+    width: fit-content;
+    height: 160px;
+    object-fit: cover;
+}
+
+.shop p{
+    text-indent: 30px;
+    border-radius: 10px;
+    margin-top:150px;
+    margin-bottom: 0px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background-color:rgb(230, 213, 247);
+}
+
+.shopItemTitle{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 20px;
+}
+
+.shop-item-price{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 20px;
+}
+
+.shop label{
+    border:none;
+    margin-bottom:0px;
+}
+
+#shop-form{
+    width: auto;
+}
+
+.cart{
+    background-color:burlywood;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.cart-labels{
+    font-weight: bold;
+    font-size: 20px;
+    text-align: right;
+    margin-left: 10px;
+}
+
+.cart-row{
+    display: flex;
+}
+
+.cart-column{
+    display: flex;
+    align-items: center;
+}
+
+.cart-item{
+    width: 20%;
+}
+
+.cart-price{
+    width: 22%;
+    font-size: 20px;
+}
+
+.cart-item-name{
+    margin-left:10px;
+    font-size:20px;
+}
+
+.cart h2{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 30px;
+    text-align: center;
+}
+
+.cart-quantity{
+    margin-left:10px;
+    font-size:20px;
+    margin-right:70px;
+}
+
+.cart-quantity-input{
+    text-align: center;
+    width: 15%;
+}
+
+.cart-total{
+    margin-left: 10px;
+    width: 22%;
+    font-size: 20px;
+}
+
+.cart-total strong{
+    font-size: 25px;
+    text-align: right;
+}
+
+.cart-final-price{
+    width: 22%;
+    font-size: 25px;
+}
+
+.cart-add-btn{
+    background-color: burlywood;
+    align-self: center;
+    width: 100px;
+    transition:ease .1s;
+}
+
+.cart-add-btn:hover{
+    background-color:cadetblue;
+}
+
+.rmv-button{
+    margin-left: 50px;
+    text-align:center;
+    font-size:20px;
+    vertical-align:middle;
+    padding: 5px 10px;
+    background-color:rgb(178, 124, 228);
+    border: none;
+    transition:ease .1s;
+}
+
+.rmv-button:hover{
+    background-color: rgb(197, 155, 236);
+}
+
+.grid-container{
+    margin: 20px;
+    display: grid;
+    grid-gap: 30px;
+    column-gap: 100px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-auto-rows: 300px;
+}
+
+.grid-item{
+    border:solid 2px blueviolet;
+    background-color: beige;
+    display: grid;
+    align-items:last baseline;
 }
 
 .mainNav{
@@ -15,6 +189,8 @@ img{
 }
 
 .mainNav a{
+    transition:ease .5s;
+    font-size: 30px;
     float: left;
     text-align: center;
     padding: 10px 20px;
@@ -24,6 +200,9 @@ img{
 
 .catalog-nav table{
     text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2%
 }
 
 .catalog-nav table td{
@@ -47,6 +226,7 @@ img{
 table{
     border: solid 3pt blueviolet;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    align-items: center;
 }
 
 td{
@@ -73,7 +253,18 @@ tbody tr{
     background-color: rgb(230, 213, 247);
 }
 
+.seasonal-table{
+    font-size: 20px;
+}
+
+.seasonal-table table{
+    margin-top: 1%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .drop-button{
+    font-size: 30px;
     background-color: inherit;
     color: inherit;
     font-family: inherit;
@@ -87,12 +278,13 @@ tbody tr{
 }
 
 .drop-options{
+    font-size: 15px;
     display: none;
     position: absolute;
-    top:40px;
+    top:60px;
     z-index: 1;
     background-color: burlywood;
-    box-shadow: 0px 8px 16px 0px coral;
+    box-shadow: 0px 8px 16px 0px black;
     min-width: 100px;
 }
 
@@ -110,9 +302,6 @@ tbody tr{
     display: block;
 }
 
-.dropdown:hover .drop-button{
-    background-color: coral;
-}
 
 a{
     color: rgb(72, 7, 133);
@@ -136,4 +325,37 @@ h1, .flower-page h2{
     max-width: 60%;
     max-height: 400px;
     object-fit: cover;
+}
+
+.login{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#login-form{
+    width: 50%;
+    height: 50%;
+    display: grid;
+    align-items: left;
+    padding: 5px;
+}
+
+#login-error-msg{
+    color: brown;
+    opacity: 0;
+    font-weight: bold;
+}
+
+#login-submit-button{
+    padding: 5px;
+    border: solid 1px blueviolet;
+    border-radius: 3px;
+    font-weight: bold;
+    background-color: rgb(182, 172, 247);
+    outline: none;
+    width: 100%;
+    margin-top: 20px;
+}
+
+#login-form legend{
+    font-size: larger;
 }

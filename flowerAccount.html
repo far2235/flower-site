@@ -2,6 +2,7 @@
 <html>
     <head>
         <link rel="stylesheet" href="flowerCSS.css">
+        <script defer src="login.js"></script>
         <h1>Account</h1>
     </head>
     <body>
@@ -24,28 +25,25 @@
                 <a href="flowerAccount.html">My Account</a>
             </div>
         </div>
-        <div>
+        <div class="login">
             <p>
                 Log in to make purchases, view transaction history, and more!
             </p>
-        </div>
-        <div>
-            <form method="post" action="process.php">
-                <fieldset>
+           <main id="login-form">
+                <div>
+                    <p id="login-error-msg">Account not found</p>
+                </div>
+                <form id="login-form">
                     <legend>Log in</legend>
                     <p>
                         <label>Username</label>
-                        <input type="text" name="username" />
-                    </p>
-                    <p>
+                        <input type="text" name="username" id="uname">
                         <label>Password</label>
-                        <input type="password" name="password" />
+                        <input type="password" name="password" id="pword">
+                        <input type="submit" value="Log in" id="login-submit-button">
                     </p>
-                    <input type="submit" />
-                </fieldset>
-            </form>
-        </div>
-        <div>
+                </form>
+           </main>
             <p>
                 New user? Create an account by clicking <a href="accountCreate.html">here</a>.
             </p>
