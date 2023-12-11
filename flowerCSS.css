@@ -516,7 +516,7 @@ h1, .flower-page h2{
 
 .flower-page img{
     float: right;
-    margin: 20px;
+    margin: 2em;
     max-width: 60%;
     max-height: 400px;
     object-fit: cover;
@@ -527,10 +527,7 @@ h1, .flower-page h2{
 }
 
 .login-form{
-    width: 50%;
-    height: 50%;
-    display: grid;
-    align-items: left;
+    align-items: center;
     padding: 5px;
 }
 
@@ -540,16 +537,7 @@ h1, .flower-page h2{
 }
 
 .login-submit-button{
-    padding: 5px;
-    border: solid 1px blueviolet;
-    border-radius: 3px;
-    font-weight: bold;
-    background-color: rgb(182, 172, 247);
-    outline: none;
-    width: 100%;
-    margin-top: 20px;
-}
-
-#login-form legend{
-    font-size: larger;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgb(178, 124, 228);
 }

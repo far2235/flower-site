@@ -9,7 +9,7 @@ $username_err = $password_err = $confirm_password_err = "";
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     //check username
     //if left empty
-    if(empty(trim($POST["username"]))){
+    if(empty(trim($_POST["username"]))){
         $username_err = "Username cannot be empty.";
     }
     //if it contains special symbols
@@ -37,7 +37,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 }
             }
             else{
-                echo("Database error!");
+                echo "Database error!";
             }
             mysqli_stmt_close($stmt);
         }
@@ -45,7 +45,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     //check password
     //if left empty
-    if(empty(trim($POST["password"]))){
+    if(empty(trim($_POST["password"]))){
         $password_err = "Password cannot be empty.";
     }
     //if too short
@@ -59,7 +59,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     //check password confirmation
     //if left empty
-    if(empty(trim($POST["confirm_password"]))){
+    if(empty(trim($_POST["confirm_password"]))){
         $confirm_password_err = "Please confirm your password.";
     }
     else{
@@ -72,7 +72,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     //database insertion
     //check for errors first
     if(empty($username_err) && empty($password_err) && empty($confirm_password_err)){
-        $sql = "INSERT INTO users (username, password), VALUES(?,?)";
+        $sql = "INSERT INTO users (username, password) VALUES (?, ?)";
         if($stmt = mysqli_prepare($link,$sql)){
             mysqli_stmt_bind_param($stmt,"ss",$param_username,$param_password);
             //set parameters
@@ -85,9 +85,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 header("location: authentication.php");
             }
             else{
-                echo("Error: account could not be created (for some reason?)");
+                echo "Error: account could not be created (for some reason?)";
             }
             mysqli_stmt_close($stmt);
+        }
+        else{
+            echo "Error accessing database";
         }
     }
     mysqli_close($link);
@@ -104,43 +107,25 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <body>
         <div class="login">
             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-                <fieldset>
-                    <legend>Your Info</legend>
-                    <p>
-                        <label>Create a username:</label>
-                        <input type="text" name="username" class="login-form <?php echo(!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>" >
-                        <span class="invalid-login"><?php echo $username_err; ?></span>
-                    </p>
-                    <p>
-                        <label>Create a password:</label>
-                        <input type="password" name="password" class="login-form <?php echo(!empty($password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $password; ?>" />
-                        <span class="invalid-login"><?php echo $password_err; ?></span>
-                    </p>
-                    <p>
-                        <label>Confirm password:</label>
-                        <input type="password" name="confirm_password" class="login-form <?php echo(!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $confirm_password; ?>" />
-                        <span class="invalid-login"><?php echo $confirm_password_err; ?></span>
-                    </p>
-                    <p>
-                        <label>Select your birth month:</label>
-                        <select name="month">
-                            <option>no response</option>
-                            <option>January</option>
-                            <option>February</option>
-                            <option>March</option>
-                            <option>April</option>
-                            <option>May</option>
-                            <option>June</option>
-                            <option>July</option>
-                            <option>August</option>
-                            <option>September</option>
-                            <option>October</option>
-                            <option>November</option>
-                            <option>December</option>
-                        </select>
-                    </p>
-                    <input type="submit" value="Submit" id="accreate-submit"/>
-                </fieldset>
+                <legend>Your Info</legend>
+                <div class="login-form">
+                    <label>Create a username:</label>
+                    <input type="text" name="username" class="login-form <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
+                    <span class="invalid-login"><?php echo $username_err; ?></span>
+                </div>
+                <div class="login-form">
+                    <label>Create a password:</label>
+                    <input type="password" name="password" class="login-form <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $password; ?>">
+                    <span class="invalid-login"><?php echo $password_err; ?></span>
+                </div>
+                <div class="login-form">
+                    <label>Confirm password:</label>
+                    <input type="password" name="confirm_password" class="login-form <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $confirm_password; ?>">
+                    <span class="invalid-login"><?php echo $confirm_password_err; ?></span>
+                </div>
+                <div class="login-form">
+                    <input type="submit" value="Create Account" class="login-submit-button"/>
+                </div>
             </form>
             <p>
                 Click <a href="authentication.php">here</a> to go back

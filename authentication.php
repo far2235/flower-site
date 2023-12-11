@@ -3,7 +3,7 @@ session_start();
 
 //go to home page if already logged in
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-    header("location: flowerHome.html");
+    header("location: loggedIn.php");
     exit;
 }
 
@@ -129,8 +129,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     <input type="password" name="password" class="login-form <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>">
                     <span class="invalid-login"><?php echo $password_err; ?></span>
                 </div>
-                <div class="login-form">
-                    <input type="submit" class="login-submit-button" value="Login">
+                <div>
+                    <input type="submit" value="Login">
                 </div>
                 <p>
                     New user? Create an account by clicking <a href="registration.php">here</a>.
