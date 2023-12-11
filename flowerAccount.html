@@ -3,7 +3,7 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="flowerCSS.css">
-        <script defer src="login.js"></script>
+        <script src="login.js"></script>
         <h1>Account</h1>
     </head>
     <body>
@@ -28,25 +28,26 @@
         </div>
         <div class="login">
             <p>
-                Log in to make purchases, view transaction history, and more!
+                Log in to view transaction history, get a member discount and more!
             </p>
            <main id="login-form">
-                <div>
-                    <p id="login-error-msg">Account not found</p>
-                </div>
-                <form id="login-form">
+                <form name="login" action="authentication.php" onsubmit="return validateUser()" method="post">
                     <legend>Log in</legend>
                     <p>
                         <label>Username</label>
                         <input type="text" name="username" id="uname">
+                    </p>
+                    <p>
                         <label>Password</label>
                         <input type="password" name="password" id="pword">
+                    </p>
+                    <p>
                         <input type="submit" value="Log in" id="login-submit-button">
                     </p>
                 </form>
            </main>
             <p>
-                New user? Create an account by clicking <a href="accountCreate.html">here</a>.
+                New user? Create an account by clicking <a href="registration.php">here</a>.
             </p>
         </div>
     </body>

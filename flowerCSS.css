@@ -526,7 +526,7 @@ h1, .flower-page h2{
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-#login-form{
+.login-form{
     width: 50%;
     height: 50%;
     display: grid;
@@ -534,13 +534,12 @@ h1, .flower-page h2{
     padding: 5px;
 }
 
-#login-error-msg{
-    color: brown;
-    opacity: 0;
+.invalid-login{
+    color: red;
     font-weight: bold;
 }
 
-#login-submit-button{
+.login-submit-button{
     padding: 5px;
     border: solid 1px blueviolet;
     border-radius: 3px;

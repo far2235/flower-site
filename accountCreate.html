@@ -3,25 +3,28 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="flowerCSS.css">
-        <script src="createAccount.js"></script>
         <h1>Create Account</h1>
     </head>
     <body>
+        <?php include 'registration.php' ?>
         <div class="login">
-            <form id="accreate-form" method="post" action="process.php">
+            <form action="<?php echo htmlspecialchars($_SERVER[&quot;PHP_SELF&quot;]); ?>" method="post">
                 <fieldset>
                     <legend>Your Info</legend>
                     <p>
                         <label>Create a username:</label>
-                        <input type="text" name="username" />
+                        <input type="text" name="username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>" >
+                        <span class="invalid-login"><?php echo $username_err; ?></span>
                     </p>
                     <p>
                         <label>Create a password:</label>
-                        <input type="password" name="password" />
+                        <input type="password" name="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $password; ?>" />
+                        <span class="invalid-login"><?php echo $password_err; ?></span>
                     </p>
                     <p>
                         <label>Confirm password:</label>
-                        <input type="password" name="password" />
+                        <input type="password" name="confirm_password" class="form-control <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $confirm_password; ?>" />
+                        <span class="invalid-login"><?php echo $confirm_password_err; ?></span>
                     </p>
                     <p>
                         <label>Select your birth month:</label>

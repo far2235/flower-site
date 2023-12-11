@@ -1,19 +1,8 @@
-const loginForm = document.getElementById("login-form");
-const loginButton = document.getElementById("login-submit");
-const loginErrMsg = document.getElementById("login-error-msg");
-
-loginButton.addEventListener("click",(e)=>{
-    //don't actually submit anything (yet)
-    e.preventDefault();
-    const uname = loginForm.uname.value;
-    const pword = loginForm.pword.value;
-
-    if(uname == "user" && pword == "pass"){
-        //reload page on successful login
-        location.reload();
+function validateUser(){
+    var un = document.login.uname.value;
+    var pw = docment.login.pword.value;
+    if(un.length == "" || pw.length == ""){
+        alert("Cannot leave username or password fields blank");
+        return false;
     }
-    else{
-        //make error message visible
-        loginErrMsg.style.opacity = 1;
-    }
-});
+}
