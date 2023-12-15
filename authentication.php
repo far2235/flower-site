@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+include 'functions.php';
+
 //go to home page if already logged in
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
     header("location: loggedIn.php");
@@ -58,7 +60,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             $_SESSION["username"] = $username;
 
                             //go to home page
-                            header("location: flowerHome.html");
+                            header("location: index.php?page=home");
                         }
                         else{ //incorrect password
                             $login_err = "Username and password do not match.";
@@ -81,61 +83,36 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 }
 ?>
 
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="flowerCSS.css">
-        <h1>Account</h1>
-    </head>
-    <body>
-        <div class="mainNav">
-            <div class="dropdown">
-                <a href="flowerCatalog.html"><button class="drop-button">Catalog</button></a>
-                <div class="drop-options">
-                    <a href="aster.html">Aster</a>
-                    <a href="chrysanthemum.html">Chrysanthemum</a>
-                    <a href="crocus.html">Crocus</a>
-                    <a href="daffodil.html">Daffodil</a>
-                    <a href="fuchsia.html">Fuchsia</a>
-                    <a href="rose.html">Rose</a>
-                    <a href="tulip.html">Tulip</a>
-                </div>
-            </div>
-                <a href="flowerHome.html">Home</a>
-                <a href="flowerSeasonal.html">Seasonal</a>
-                <a href="flowerPurchase.html">Purchase</a>
-                <a href="authentication.php">My Account</a>
-            </div>
+<?=template_header('Log In')?>
+
+<div class="login">
+    <p>
+        Log in for an exclusive member discount!
+    </p>
+    <h2>Sign in </h2>
+    <?php
+        if(!empty($login_err)){
+            echo '<div class="invalid-login">' . $login_err . '</div>';
+        }
+    ?>
+    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+        <div class="login-form">
+            <label>Username:</label>
+            <input type="text" name="username" class="login-form <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
+            <span class="invalid-login"><?php echo $username_err; ?></span>
         </div>
-        <div class="login">
-            <p>
-                Log in to view transaction history, get a member discount and more!
-            </p>
-           <h2>Sign in </h2>
-           <?php
-                if(!empty($login_err)){
-                    echo '<div class="invalid-login">' . $login_err . '</div>';
-                }
-           ?>
-           <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-                <div class="login-form">
-                    <label>Username:</label>
-                    <input type="text" name="username" class="login-form <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
-                    <span class="invalid-login"><?php echo $username_err; ?></span>
-                </div>
-                <div class="login-form">
-                    <label>Password:</label>
-                    <input type="password" name="password" class="login-form <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>">
-                    <span class="invalid-login"><?php echo $password_err; ?></span>
-                </div>
-                <div>
-                    <input type="submit" value="Login">
-                </div>
-                <p>
-                    New user? Create an account by clicking <a href="registration.php">here</a>.
-                </p>
-            </form>
+        <div class="login-form">
+            <label>Password:</label>
+            <input type="password" name="password" class="login-form <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>">
+            <span class="invalid-login"><?php echo $password_err; ?></span>
         </div>
-    </body>
-</html>
+        <div>
+            <input type="submit" value="Login">
+        </div>
+        <p>
+            New user? Create an account by clicking <a href="registration.php">here</a>.
+        </p>
+    </form>
+</div>
+
+<?=template_footer()?>
