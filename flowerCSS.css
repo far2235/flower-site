@@ -174,9 +174,8 @@ p{
     }
 
     .grid-item{
-        width:30vh;
         border:solid 2px blueviolet;
-        background-color: beige;
+        background-color: rgb(230, 213, 247);
         display: grid;
         align-items:last baseline;
     }
@@ -213,7 +212,7 @@ p{
 
     .grid-item{
         border:solid 2px blueviolet;
-        background-color: beige;
+        background-color: rgb(230, 213, 247);
         display: grid;
         align-items:last baseline;
     }
@@ -250,7 +249,7 @@ p{
 
     .grid-item{
         border:solid 2px blueviolet;
-        background-color: beige;
+        background-color: rgb(230, 213, 247);
         display: grid;
         align-items:last baseline;
     }

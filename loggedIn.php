@@ -8,6 +8,7 @@ include 'functions.php';
 
 <div class="flower-page">
     <h2>Logged in as: <?php echo htmlspecialchars($_SESSION["username"]); ?>.</h2>
+    <br>
     <p><a href="logout.php">Sign Out</a></p>
 </div>
 
