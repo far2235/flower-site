@@ -1,6 +1,6 @@
 <?php
 // The amounts of products to show on each page
-$num_products_on_each_page = 4;
+$num_products_on_each_page = 8;
 // The current page - in the URL, will appear as index.php?page=products&p=1, index.php?page=products&p=2, etc...
 $current_page = isset($_GET['p']) && is_numeric($_GET['p']) ? (int)$_GET['p'] : 1;
 // Select products ordered by the date added
@@ -14,17 +14,17 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $total_products = $pdo->query('SELECT * FROM products')->rowCount();
 ?>
 
-<?=template_header('Products')?>
+<?=template_header('Shop')?>
 
-<div class="products content-wrapper">
-    <h1>Products</h1>
-    <p><?=$total_products?> Products</p>
-    <div class="products-wrapper">
+<div class="shop">
+    <h1>Flowers for Sale</h1>
+    <div class="grid-container">
         <?php foreach ($products as $product): ?>
-        <a href="index.php?page=product&id=<?=$product['id']?>" class="product">
+        <a href="index.php?page=product&id=<?=$product['id']?>" class="grid-item">
             <img src="images/<?=$product['img']?>" width="200" height="200" alt="<?=$product['name']?>">
-            <span class="name"><?=$product['name']?></span>
-            <span class="price">
+            <br>
+            <span class="shop-item-title"><?=$product['name']?></span>
+            <span class="shop-item-price">
                 &dollar;<?=$product['price']?>
                 <?php if ($product['rrp'] > 0): ?>
                 <span class="rrp">&dollar;<?=$product['rrp']?></span>

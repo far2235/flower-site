@@ -102,31 +102,36 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="flowerCSS.css">
+        <script src="register.js"></script>
         <h1>Create Account</h1>
     </head>
     <body>
         <div class="login">
-            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" onsubmit="return validate()" method="post">
                 <legend>Your Info</legend>
                 <div class="login-form">
                     <label>Create a username:</label>
-                    <input type="text" name="username" class="login-form <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
+                    <input type="text" name="username" id="uname" onkeyup="validate_uname()" class="login-form <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
                     <span class="invalid-login"><?php echo $username_err; ?></span>
+                    <div class="invalid-login" id="bad-uname"></div>
                 </div>
                 <div class="login-form">
                     <label>Create a password:</label>
-                    <input type="password" name="password" class="login-form <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $password; ?>">
+                    <input type="password" name="password" id="pword" onkeyup="validate_pass()" class="login-form <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $password; ?>">
                     <span class="invalid-login"><?php echo $password_err; ?></span>
+                    <div class="invalid-login" id="bad-pass"></div>
                 </div>
                 <div class="login-form">
                     <label>Confirm password:</label>
-                    <input type="password" name="confirm_password" class="login-form <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $confirm_password; ?>">
+                    <input  type="password" name="confirm_password" id="cpword" onkeyup="validate_conf()" class="login-form <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $confirm_password; ?>">
                     <span class="invalid-login"><?php echo $confirm_password_err; ?></span>
+                    <div class="invalid-login" id="bad-conf"></div>
                 </div>
                 <div class="login-form">
                     <input type="submit" value="Create Account" class="login-submit-button"/>
                 </div>
             </form>
+            <script type="text/javascript" src="register.js"></script>
             <p>
                 Click <a href="authentication.php">here</a> to go back
             </p>

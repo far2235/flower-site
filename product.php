@@ -14,11 +14,12 @@ else{
 
 <?=template_header('Product')?>
 
+<br>
 <div class="product content-wrapper">
     <img src="images/<?=$product['img']?>" width="auto" height="400" alt="<?=$product['name']?>">
     <div>
         <h1 class="name"><?=$product['name']?></h1>
-        <span class="price">
+        <span class="shop-item-price">
             &dollar;<?=$product['price']?>
             <?php if ($product['rrp'] > 0): ?>
             <span class="rrp">&dollar;<?=$product['rrp']?></span>

@@ -51,10 +51,17 @@ if (isset($_POST['placeorder']) && isset($_SESSION['cart']) && !empty($_SESSION[
     exit;
 }
 
+//member discount
+$member_discount = 1.00;
+if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+    $member_discount = 0.90; //10 percent off
+}
+
 //get cart items and select from DB
 $products_in_cart = isset($_SESSION['cart']) ? $_SESSION['cart'] : array();
 $products = array();
 $subtotal = 0.00;
+$discount_total = 0.00;
 //if there are products in cart
 if ($products_in_cart) {
     $array_to_question_marks = implode(',', array_fill(0, count($products_in_cart), '?'));
@@ -63,8 +70,17 @@ if ($products_in_cart) {
     $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
     //calculate subtotal
     foreach ($products as $product) {
-        $subtotal += (float)$product['price'] * (int)$products_in_cart[$product['id']];
+        $subtotal += (float)$product['price'] * (int)$products_in_cart[$product['id']] * $member_discount;
+        $discount_total += (float)$product['price'] * (int)$products_in_cart[$product['id']] * (1-$member_discount);
     }
+    //fix pricing precision
+    $subtotal = $subtotal*100;
+    $subtotal = floor($subtotal);
+    $subtotal = $subtotal/100;
+
+    $discount_total = $discount_total*100;
+    $discount_total = floor($discount_total);
+    $discount_total = $discount_total/100;
 }
 ?>
 
@@ -92,7 +108,7 @@ if ($products_in_cart) {
                 <tr>
                     <td class="img">
                         <a href="index.php?page=product&id=<?=$product['id']?>">
-                            <img src="imgs/<?=$product['img']?>" width="50" height="50" alt="<?=$product['name']?>">
+                            <img src="images/<?=$product['img']?>" width="50" height="50" alt="<?=$product['name']?>">
                         </a>
                     </td>
                     <td>
@@ -110,10 +126,15 @@ if ($products_in_cart) {
                 <?php endif; ?>
             </tbody>
         </table>
+        <br>
         <div class="subtotal">
-            <span class="text">Subtotal</span>
-            <span class="price">&dollar;<?=$subtotal?></span>
+            <span class="shop-item-title">Discount:</span>
+            <span class="shop-item-price">&dollar;<?=$discount_total?></span>
+        <div class="subtotal">
+            <span class="shop-item-title">Subtotal</span>
+            <span class="shop-item-price">&dollar;<?=$subtotal?></span>
         </div>
+        <br>
         <div class="buttons">
             <input type="submit" value="Update" name="update">
             <input type="submit" value="Place Order" name="placeorder">
