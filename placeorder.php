@@ -1,5 +1,5 @@
 <?php
-unset($_SESSION['cart'])
+unset($_SESSION['cart']);
 ?>
 
 <?=template_header('Place Order')?>
